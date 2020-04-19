@@ -33,9 +33,15 @@ namespace LanguageFeatures.Model
                 Price = 48.95M
             };
 
+            Product Sunscreen = new Product(false)
+            {
+                Name = "Water Ski",
+                Price = 15
+            };
+
             kayak.Related = lifejacket;
 
-            return new Product[] { kayak, lifejacket, null };
+            return new Product[] { kayak, lifejacket, Sunscreen, null };
         }
     }
 }

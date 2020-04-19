@@ -16,5 +16,16 @@ namespace LanguageFeatures.Model
             }
             return total;
         }
+
+        public static IEnumerable<Product> FilterByPrice(this IEnumerable<Product> productEnum, decimal minimumPrice)
+        {
+            foreach(Product prod in productEnum)
+            {
+                if((prod?.Price ?? 0) >= minimumPrice)
+                {
+                    yield return prod;
+                }
+            }
+        }
     }
 }
