@@ -12,6 +12,9 @@ namespace LanguageFeatures.Controllers
     {
         public ViewResult Index()
         {
+            ShoppingCart cart = new ShoppingCart { Products = Product.GetProducts() };
+            decimal cartTotal = cart.TotalPrices();
+
             List<string> results = new List<string>();
 
             foreach(Product p in Product.GetProducts())
@@ -22,6 +25,8 @@ namespace LanguageFeatures.Controllers
                 results.Add($"Name: {name}, Price: {price:C2}, Related: {relatedName}");
 
             }
+            results.Add($"Total Cost: {cartTotal}");
+
             return View(results);
         }
     }
