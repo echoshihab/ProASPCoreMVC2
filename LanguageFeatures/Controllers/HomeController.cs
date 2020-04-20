@@ -10,10 +10,12 @@ namespace LanguageFeatures.Controllers
 {
     public class HomeController : Controller
     {
+
         public ViewResult Index()
         {
             ShoppingCart cart = new ShoppingCart { Products = Product.GetProducts() };
-            decimal cartTotal = cart.FilterByPrice(20).TotalPrices();
+
+            decimal priceFilterTotal = cart.Filter(p => (p?.Price ?? 0) >= 20).TotalPrices();
 
             List<string> results = new List<string>();
 
@@ -26,7 +28,9 @@ namespace LanguageFeatures.Controllers
 
             }
 
-            results.Add($"Total Cost: {cartTotal}");
+           
+
+            results.Add($"Total Cost of items that are more expensive than 20$: {priceFilterTotal}");
 
             return View(results);
         }
