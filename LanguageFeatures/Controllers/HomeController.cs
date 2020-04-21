@@ -10,10 +10,14 @@ namespace LanguageFeatures.Controllers
 {
     public class HomeController : Controller
     {
-
-        public ViewResult Index()
+        
+       
+           
+   
+        public async Task<ViewResult> Index()
         {
-            ShoppingCart cart = new ShoppingCart { Products = Product.GetProducts() };
+            long? length = await MyAsyncMethods.GetPageLength();
+        ShoppingCart cart = new ShoppingCart { Products = Product.GetProducts() };
 
             decimal priceFilterTotal = cart.Filter(p => (p?.Price ?? 0) >= 20).TotalPrices();
 
@@ -28,10 +32,9 @@ namespace LanguageFeatures.Controllers
 
             }
 
-           
 
             results.Add($"Total Cost of items that are more expensive than 20$: {priceFilterTotal}");
-
+            results.Add( $"Length: {length}" );
             return View(results);
         }
     }
