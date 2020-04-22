@@ -1,15 +1,8 @@
 ﻿@model Product
 @{
-    Layout = null;
+    ViewBag.Title = "Product Name";
 }
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    @Model.Name
-</body>
-</html>
+
+    <p>Product Name: @Model.Name</p>
+<p>Propduct Price: @($"{Model.Price:C2}")</p>
