@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace WorkingWithVisualStudio.Model
 {
-    public class SimpleRepository
+    public class SimpleRepository : IRepository
     {
         private static SimpleRepository sharedRepository = new SimpleRepository();
         private Dictionary<string, Product> products = new Dictionary<string, Product>();
